@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/602049491.svg)](https://zenodo.org/badge/latestdoi/602049491)
 
 # Apaper
 Analysis of papers using the grobid tool [1] and python scripts.
