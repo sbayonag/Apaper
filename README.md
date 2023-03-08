@@ -21,7 +21,7 @@ From  ‘Open Science and Artificial Intelligence in Research Software Engineeri
 # Usage
 Clone the repository:
 
-    git clone httzps://github.com/sbayonag/Apaper.git
+    git clone https://github.com/sbayonag/Apaper.git
     cd Apaper
 Poetry virtualization:
 
