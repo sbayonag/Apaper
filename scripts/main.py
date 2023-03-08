@@ -8,20 +8,22 @@ from wordcloud import WordCloud, STOPWORDS
 from PIL import Image
 import numpy as np
 
+outputDirectory = "./papers/results"
 client = GrobidClient(config_path="./config.json")
-client.process("processFulltextDocument", "./papers", "./papers/results",
+client.process("processFulltextDocument", "./papers", outputDirectory,
                consolidate_citations=True, n=20, force=False, verbose=True)
 
-directory = "./papers/results"
 frecuenciesKeywords = defaultdict(int)
 histogramFigures = []
 linksPerPaper = defaultdict(list)
 
-for file in os.scandir(directory):
+for file in os.scandir(outputDirectory):
+    if file.is_dir():
+        continue
     if not file.name.endswith(".xml"):
         print(f"Ignoring file that doesn't have '.xml' extension: {file.name}")
         continue
-    
+
     filename = file.name[:-4]
     with open(file.path, 'r') as tei:
         soup = BeautifulSoup(tei, 'xml')
@@ -34,12 +36,12 @@ for file in os.scandir(directory):
         collocations=False,
         stopwords=STOPWORDS,
     ).generate(soup.find('abstract').get_text(strip=True))
-    word_cloud.to_file(f'./papers/results/images/{filename}.png')
+    word_cloud.to_file(f'{outputDirectory}/images/{filename}.png')
 
     # histogram of the frecuency of figures
     histogramFigures.append(len(soup.find_all('figure')))
     plt.hist(histogramFigures)
-    plt.savefig('figures_histogram.png')
+    plt.savefig(f'{outputDirectory}/images/figures_histogram.png')
 
     # extract links
     for link in soup.find_all('ptr'):
