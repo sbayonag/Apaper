@@ -24,7 +24,7 @@ for file in os.scandir(outputDirectory):
         print(f"Ignoring file that doesn't have '.xml' extension: {file.name}")
         continue
 
-    filename = file.name[:-4]
+    filename = file.name[:-8]
     with open(file.path, 'r') as tei:
         soup = BeautifulSoup(tei, 'xml')
 
