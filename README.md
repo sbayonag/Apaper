@@ -44,7 +44,7 @@ Run the script inside a poetry shell:
  1. Visualization of keywords at ./papers/results/images with the paper
     title and png extension. It uses wordcloud (see https://amueller.github.io/word_cloud/index.html) 
  2. Histrogram of the number of figures per article at ./papers/results/images/figures_histogram.png using matplotlib (see https://matplotlib.org/) 
- 3. List of links per paper in json format in ./papers/results/links with the paper title and json extension
+ 3. List of links per paper in json format in ./papers/results/links with the links filename and json extension
 
 # Referencias
 1. GROBID (2008-2022) <https://github.com/kermitt2/grobid>
