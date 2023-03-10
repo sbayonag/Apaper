@@ -40,12 +40,12 @@ for file in os.scandir(outputDirectory):
 
     # histogram of the frecuency of figures
     histogramFigures.append(len(soup.find_all('figure')))
-    plt.hist(histogramFigures)
-    plt.savefig(f'{outputDirectory}/images/figures_histogram.png')
 
     # extract links
     for link in soup.find_all('ptr'):
         linksPerPaper[filename].append(link.get('target'))
 
+plt.hist(histogramFigures)
+plt.savefig(f'{outputDirectory}/images/figures_histogram.png')
 with open("./papers/results/links/links.json", "w") as outfile:
     json.dump(linksPerPaper, outfile)
