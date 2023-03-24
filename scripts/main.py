@@ -5,8 +5,6 @@ import json
 from grobid_client.grobid_client import GrobidClient
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
-from PIL import Image
-import numpy as np
 
 outputDirectory = "./papers/results"
 client = GrobidClient(config_path="./config.json")
@@ -47,5 +45,5 @@ for file in os.scandir(outputDirectory):
 
 plt.hist(histogramFigures)
 plt.savefig(f'{outputDirectory}/images/figures_histogram.png')
-with open("./papers/results/links/links.json", "w") as outfile:
+with open(f"{outputDirectory}/links/links.json", "w") as outfile:
     json.dump(linksPerPaper, outfile)
